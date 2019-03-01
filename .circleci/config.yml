@@ -52,3 +52,19 @@ jobs:
       - store_artifacts:
           path: test-reports
           destination: test-reports
+
+dependencies:
+  pre:
+    - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
+    - sudo dpkg -i cf-cli_amd64.deb
+    - cf -v
+
+test:
+  post:
+    - cf login -a https://api.fr.cloud.gov -u e1f20773-d686-48b8-a4a7-08c56abcbe3e -p $CF_PASS -o ORG -s SPACE
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - cf push

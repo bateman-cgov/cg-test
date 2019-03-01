@@ -8,8 +8,8 @@ app.debug = True
 @app.route('/')
 def hello():
 	env = json.loads(os.getenv('VCAP_SERVICES'))
-
-	return json.dumps(env)
+	return "it's alive!"
+	#return json.dumps(env)
 
 port = os.getenv('PORT', '5000')
 if __name__ == "__main__":
