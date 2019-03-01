@@ -1,0 +1,5 @@
+---
+applications:
+- name: python-flask-bateman
+  buildpack: python_buildpack
+  memory: 256M
